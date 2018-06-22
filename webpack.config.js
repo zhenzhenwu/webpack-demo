@@ -13,6 +13,19 @@ module.exports = {
                 test: /(\.jsx|\.js)$/,
                 use: 'babel-loader',
                 exclude: path.resolve(__dirname, 'node_modules')
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: 'style-loader'},
+                    { loader: 'css-loader', options: { module: true } }
+                ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader'
+                ]
             }
         ]
     }
