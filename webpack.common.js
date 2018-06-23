@@ -1,11 +1,15 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
-    entry: path.join(__dirname, './src/index.js'),
+    entry: {
+        app: path.join(__dirname, './src/index.js'),
+        print: path.join(__dirname, './src/print.js'),
+    },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
+        filename: '[name].[chunkhash].js'
     },
     module: {
         rules: [
@@ -28,5 +32,11 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin(['dist']),   // 清理/dist文件夹
+        new HtmlWebpackPlugin({         // 生成HTML文件，并动态添加bundle
+            title: 'Output Management'
+        })
+    ]
 }
