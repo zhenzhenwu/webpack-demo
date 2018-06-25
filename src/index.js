@@ -5,6 +5,8 @@ import icon from '../public/img/alipay.png'
 import printMe from './print.js'
 import Vue from 'vue'
 import router from './router'
+// 导入公共methods
+import Methods from './methods'
 
 // 导入vue组件
 import App from './components/app.vue'
@@ -91,6 +93,7 @@ Vue.component('button-counter', {
     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
   })
 
+Vue.use(Methods)
 // 这里传给Vue的值也是一个组件，并挂载到了#app上
 /* eslint-disable no-new */
 new Vue({
@@ -113,7 +116,9 @@ new Vue({
                 <input type="text" v-model="parentData">
                 <News v-bind:parent-data="parentData" @changeData="handleChangeParentData"></News>
                 <router-link to="/photos">图片</router-link>
+                <div style="border:1px solid #ccc;background-color:green">
                 <router-view></router-view>
+                </div>
                 </div>`
 })
 
