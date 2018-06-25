@@ -3,10 +3,10 @@
 //     console.log('I \' am a bar!');
 // }
 
-function bar() {
-    let t = "Hello world";
-    console.log('I \' am a bar!');
-    return t;
+function bar () {
+    let t = 'Hello world'
+    console.log('I \' am a bar!')
+    return t
 }
 
-export  {bar}
+export {bar}

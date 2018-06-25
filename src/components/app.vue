@@ -3,15 +3,15 @@
 </template>
 
 <script>
-    // 这是一个组件但它并没有绑定到具体的元素
-    export default {
-        name: 'App',
-        data () {
-            return {
-                message: 'Hi! zhenzhen'
-            }
+// 这是一个组件但它并没有绑定到具体的元素
+export default {
+    name: 'App',
+    data () {
+        return {
+            message: 'Hi! zhenzhen'
         }
     }
+}
 </script>
 
 <style lang="css">

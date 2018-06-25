@@ -2,6 +2,18 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const config = require('./config')
+
+const createLintingRule = () => ({
+    test: /\.(js|vue)$/,
+    loader: 'eslint-loader',
+    enforce: 'pre',
+    include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'test')],
+    options: {
+        formatter: require('eslint-friendly-formatter'),    // 可以让eslint的错误信息出现在终端上
+        emitWarning: !config.dev.showEslintErrorsInOverlay
+    }
+})
 
 module.exports = {
     entry: {
@@ -14,6 +26,7 @@ module.exports = {
     },
     module: {
         rules: [
+            ...(config.dev.useEslint ? [createLintingRule()] : []),
             { 
                 test: /(\.jsx|\.js)$/,
                 use: 'babel-loader',

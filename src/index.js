@@ -9,39 +9,38 @@ import Vue from 'vue'
 import App from './components/app.vue'
 import News from './components/news.vue'
 
-
-let reander_dom = document.createElement('div')
-reander_dom.innerHTML = app()
-document.body.appendChild(reander_dom)
+let renderDom = document.createElement('div')
+renderDom.innerHTML = app()
+document.body.appendChild(renderDom)
 
 // let img = new Image()
 // img.src = icon
 // document.body.appendChild(img)
 
 let btn = document.createElement('button')
-btn.innerHTML = "Click me！"
+btn.innerHTML = 'Click me！'
 btn.onclick = printMe
 document.body.appendChild(btn)
 
-
-let p = document.createElement(p)
+let p = document.createElement('p')
 p.innerHTML = bar()
 document.body.appendChild(p)
 
-
 // 懒加载
 let btn2 = document.createElement('button')
-btn2.innerText = "懒加载"
-btn2.onclick = e => { import('./lazyLoadDemo.js').then(module => {
-    let lazyLoadDemo = module.default
-    lazyLoadDemo()
-}) }
+btn2.innerText = '懒加载'
+btn2.onclick = e => {
+        import('./lazyLoadDemo.js').then(module => {
+        let lazyLoadDemo = module.default
+        lazyLoadDemo()
+    })
+}
 document.body.appendChild(btn2)
 
 // 创建一个组件构造器Vue.extend(),组建构造器就相当于类，而组件相当于该类的实例化对象
 let MyComponentExtend = Vue.extend({
     template: '<div>This is a component extend， the author is {{ author }}</div>',
-    data () {   // 注意在组件构造器中，data必须是函数
+    data () { // 注意在组件构造器中，data必须是函数
         return {
             author: 'maomao'
         }
@@ -52,7 +51,6 @@ let myComponentExtendObj = new MyComponentExtend({
         author: 'zhenzhen'
     }
 })
-
 
 // 创建另一个组件构造器
 let MyComponentExtendDemo = Vue.extend({
@@ -65,8 +63,8 @@ let MyComponentExtendDemo = Vue.extend({
 })
 
 // 注册为全局组件
-Vue.component('myComponentExtendDemo_1', MyComponentExtendDemo);
-console.log(MyComponentExtendDemo === Vue.component('myComponentExtendDemo_1'));
+Vue.component('myComponentExtendDemo_1', MyComponentExtendDemo)
+console.log(MyComponentExtendDemo === Vue.component('myComponentExtendDemo_1'))
 
 // --------------------------
 // 定义一个组建
@@ -78,9 +76,9 @@ let zujian = {
         }
     }
 }
-Vue.component('zujian', zujian);
-console.log(Vue.extend(zujian) === Vue.component('zujian'));
-console.log(Vue.extend);
+Vue.component('zujian', zujian)
+console.log(Vue.extend(zujian) === Vue.component('zujian'))
+console.log(Vue.extend)
 
 // 定义一个名为 button-counter 的新组件
 Vue.component('button-counter', {
@@ -91,12 +89,11 @@ Vue.component('button-counter', {
     },
     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
   })
-
-
 // 这里传给Vue的值也是一个组件，并挂载到了#app上
+/* eslint-disable no-new */
 new Vue({
     el: '#app',
-    components: { App, News },    // 这种注册就是局部注册，只能在该Vue势力下使用，而之前我们注册的比如myComponentExtendDemo_1就是全局组件 可以在任意地方使用
+    components: { App, News }, // 这种注册就是局部注册，只能在该Vue势力下使用，而之前我们注册的比如myComponentExtendDemo_1就是全局组件 可以在任意地方使用
     data: {
         parentData: 1
     },
@@ -112,8 +109,7 @@ new Vue({
                 <myComponentExtendDemo_1></myComponentExtendDemo_1>
                 <input type="text" v-model="parentData">
                 <News v-bind:parent-data="parentData" @changeData="handleChangeParentData"></News>  
-                </div>`  
+                </div>`
 })
 
 myComponentExtendObj.$mount('#demo-comp')
-

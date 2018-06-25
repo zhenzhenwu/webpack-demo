@@ -1,6 +1,5 @@
-import app_css from './app.css';
+import appCss from './app.css'
 
 export default () => {
-    return `<p class="${app_css.title} ${app_css.success}">Hello World</p>`;
+  return `<p class="${appCss.title} ${appCss.success}">Hello World</p>`
 }
-
