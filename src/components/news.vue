@@ -5,6 +5,8 @@
             {{ item.title }}
         </li>
     </ul>
+    <img src="../../public/img/alipay.png" alt="">
+    <div class="demo"></div>
     <input type="text" v-bind:value="parentData" @change="changeValue">
 </div>
 </template>
@@ -35,5 +37,10 @@ export default {
     .news {
         list-style: none;
         margin: 0.5em;
+    }
+    .demo {
+        background:url('../../public/img/alipay.png');
+        width:200px;
+        height:200px
     }
 </style>

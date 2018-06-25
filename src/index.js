@@ -4,6 +4,7 @@ import style from './style.css'
 import icon from '../public/img/alipay.png'
 import printMe from './print.js'
 import Vue from 'vue'
+import router from './router'
 
 // 导入vue组件
 import App from './components/app.vue'
@@ -89,11 +90,13 @@ Vue.component('button-counter', {
     },
     template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
   })
+
 // 这里传给Vue的值也是一个组件，并挂载到了#app上
 /* eslint-disable no-new */
 new Vue({
     el: '#app',
     components: { App, News }, // 这种注册就是局部注册，只能在该Vue势力下使用，而之前我们注册的比如myComponentExtendDemo_1就是全局组件 可以在任意地方使用
+    router,
     data: {
         parentData: 1
     },
@@ -108,7 +111,9 @@ new Vue({
                 <button-counter></button-counter>
                 <myComponentExtendDemo_1></myComponentExtendDemo_1>
                 <input type="text" v-model="parentData">
-                <News v-bind:parent-data="parentData" @changeData="handleChangeParentData"></News>  
+                <News v-bind:parent-data="parentData" @changeData="handleChangeParentData"></News>
+                <router-link to="/photos">图片</router-link>
+                <router-view></router-view>
                 </div>`
 })
 
