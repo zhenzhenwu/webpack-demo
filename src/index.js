@@ -12,6 +12,11 @@ import Methods from './methods'
 import App from './components/app.vue'
 import News from './components/news.vue'
 
+// 导入测试ECMA6
+import Ecma6Demo from './test/Ecma6Demo'
+
+console.log(Ecma6Demo.demo())
+
 let renderDom = document.createElement('div')
 renderDom.innerHTML = app()
 document.body.appendChild(renderDom)
